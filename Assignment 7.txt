@@ -49,7 +49,21 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': 'S3 Trigger Executed Successfully'
     }
-
+test
+{
+  "Records": [
+    {
+      "s3": {
+        "bucket": {
+          "name": "your-bucket"
+        },
+        "object": {
+          "key": "file.txt"
+        }
+      }
+    }
+  ]
+}
 Step 5: Add S3 Trigger
 In Lambda function page, click Add trigger
 Select source: S3
