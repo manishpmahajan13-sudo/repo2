@@ -29,8 +29,14 @@ Step 4: Add Lambda Code
 import json
 
 def lambda_handler(event, context):
-    print("S3 Upload Event Received")
-    print(json.dumps(event))
+    print("Event received:", json.dumps(event))
+
+    if 'Records' not in event:
+        print("No Records found in event")
+        return {
+            'statusCode': 400,
+            'body': 'Invalid event format'
+        }
 
     for record in event['Records']:
         bucket_name = record['s3']['bucket']['name']
